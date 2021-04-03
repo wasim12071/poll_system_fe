@@ -1,0 +1,36 @@
+<div class="modal fade" id="nominee_modal" tabindex="-1" role="dialog" aria-labelledby="nominee_modal_label" aria-hidden="true">
+    <form class="modal-dialog modal-dialog-centered" #nomineeForm="ngForm" (submit)="addEditNominee(nomineeForm)" role="document">
+        <div class="modal-content">
+            <div class="modal-header text-center">
+            <h2 class="modal-title font-weight-light w-100 ml-4" id="nominee_modal_label">{{ isEdit ? 'Edit' : 'Add' }} Nominee</h2>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="form-group mb-4">
+                            <label for="firstName">First Name</label>
+                            <input type="text" class="form-control secondary" id="firstName"
+                            placeholder="First Name" [ngModel]="nominee.firstName" name="firstName" #firstName="ngModel" required=""
+                            [ngClass]="{'error': nomineeForm.submitted && firstName.invalid }">
+                        </div>
+                        <div class="form-group mb-4">
+                            <label for="lastName">Last Name</label>
+                            <input type="text" class="form-control secondary" id="lastName"
+                            placeholder="Last Name" [ngModel]="nominee.lastName" name="lastName" #lastName="ngModel" required=""
+                            [ngClass]="{'error': nomineeForm.submitted && lastName.invalid }">
+                        </div>
+                    </div>
+                    <div class="col-sm-12 text-center">
+                        <p class="text-center w-100" *ngIf="generalError" class="input-error">{{generalErrorMessage}}</p>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" type="submit" class="btn w-100 border success"><i class="fas fa-check mr-2"></i>{{ isEdit ? 'Done' : 'Add' }}</button>
+            </div>
+        </div>
+    </form>
+</div>

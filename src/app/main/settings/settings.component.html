@@ -1,0 +1,52 @@
+<div class="container d-flex align-items-center justify-content-center flex-row min-vh-100 h-100" id="manage_nominees">
+    <div class="row w-100 section_box px-3 py-4 mb-4" id="edit_profile">
+        <div class="col-6 text-left">    
+            <h2 class="font-weight-light">Edit Profile</h2>
+        </div>
+        <div class="col-6 text-right">    
+            <h2 class="font-weight-light">Change Password</h2>
+        </div>
+        <form #profileForm="ngForm" (submit)="updateProfile(profileForm)" class="col-6 py-3 px-3">
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="form-group mb-4">
+                        <label for="firstName">First Name</label>
+                        <input type="text" class="form-control secondary" id="firstName"
+                        placeholder="Your First Name" [ngModel]="profile.firstName" name="firstName" #firstName="ngModel" required=""
+                        [ngClass]="{'error':profileForm.submitted && firstName.invalid }">
+                    </div>
+                    <div class="form-group mb-4">
+                        <label for="lastName">Last Name</label>
+                        <input type="text" class="form-control secondary" id="lastName"
+                        placeholder="Your Last Name" [ngModel]="profile.lastName" name="lastName" #lastName="ngModel" required=""
+                        [ngClass]="{'error':profileForm.submitted && lastName.invalid }">
+                    </div>
+                    <div class="form-group mb-4">
+                        <button class="btn border success w-100">Update Profile</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+        <form #passwordForm="ngForm" (submit)="updatePassword(passwordForm)" class="col-6 py-3 px-3">
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="form-group mb-4">
+                        <label for="password">Password</label>
+                        <input type="password" class="form-control secondary" id="password"
+                        placeholder="Enter new password" ngModel name="password" #password="ngModel" required=""
+                        [ngClass]="{'error':passwordForm.submitted && password.invalid }">
+                    </div>
+                    <div class="form-group mb-4">
+                        <label for="confirm_password">Confirm Password</label>
+                        <input type="password" class="form-control secondary" id="confirm_password"
+                        placeholder="Confirm new password" ngModel name="confirm_password" #confirm_password="ngModel" required=""
+                        [ngClass]="{'error':passwordForm.submitted && (confirm_password.invalid || passwordForm.value.password !== passwordForm.value.confirm_password) }">
+                    </div>
+                    <div class="form-group mb-4">
+                        <button class="btn border warning w-100">Update Password</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

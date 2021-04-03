@@ -1,0 +1,29 @@
+<div class="container d-flex align-items-center justify-content-center flex-row min-vh-100 h-100" id="manage_nominees">
+    <div class="row w-100 section_box px-3 py-4 mb-4">
+        <div class="col-6">    
+            <h2 class="font-weight-light">Manage Nominees</h2>
+        </div>
+        <div class="col-6 d-flex align-items-right flex-row justify-content-end">
+            <button (click)="openNomineeModal()" class="btn border success"><i class="fas fa-plus mr-1"></i> Add Nominee</button>
+        </div>
+        <div class="col-12 mb-4 pb-3">
+            <ngx-table [configuration]="configuration" [data]="nominees" [columns]="columns">
+                <ng-template let-row let-index="index">
+                    <td>
+                        <div>{{row.firstName}}</div>
+                    </td>
+                    <td>
+                        <div>{{row.lastName}}</div>
+                    </td>
+                    <td>
+                        <div class="d-flex align-items-right flex-row justify-content-end">
+                            <button (click)="openNomineeModal(row)" class="btn border"><i class="far fa-edit"></i></button>
+                            <button (click)="deleteNominee(row)" class="btn border warning mx-1"><i class="far fa-trash-alt"></i></button>
+                        </div>
+                    </td>
+                </ng-template>
+            </ngx-table>
+        </div>
+    </div>
+</div>
+<app-add-edit-nominee [nominee]="nominee" (updateData)="updateData($event)"></app-add-edit-nominee>

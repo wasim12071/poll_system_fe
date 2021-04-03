@@ -1,0 +1,9 @@
+<div class="container d-flex align-items-center flex-column justify-content-center min-vh-100">
+    <div class="row w-100">
+        <div class="col-12 text-center mb-3">
+            <h1 class="font-weight-light">{{errorPage.title}}</h1>
+            <h3 class="font-weight-light">{{errorPage.description}}</h3>
+            <a *ngIf="errorPage.route && errorPage.button" class="btn border mt-3" [routerLink]="[errorPage.route]">{{errorPage.button}}</a>
+        </div>
+    </div>
+</div>

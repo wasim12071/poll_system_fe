@@ -1,0 +1,37 @@
+<div class="modal fade" id="login_modal" tabindex="-1" role="dialog" aria-labelledby="login_modal_label" aria-hidden="true">
+    <form class="modal-dialog modal-dialog-centered" #loginForm="ngForm" (submit)="loginUser(loginForm)" role="document">
+        <div class="modal-content">
+            <div class="modal-header text-center">
+            <h2 class="modal-title font-weight-light w-100 ml-4" id="login_modal_label">Login</h2>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="form-group mb-4">
+                            <label for="email">Email</label>
+                            <input type="email" class="form-control secondary" id="email"
+                            placeholder="Your email" ngModel name="email" #email="ngModel" required=""
+                            [ngClass]="{'error':loginForm.submitted && email.invalid }">
+                        </div>
+                        <div class="form-group mb-4">
+                            <label for="password">Password</label>
+                            <input type="password" class="form-control secondary" id="password"
+                            placeholder="Your Password" ngModel name="password" #password="ngModel" required=""
+                            [ngClass]="{'error':loginForm.submitted && password.invalid }">
+                        </div>
+                    </div>
+                    <div class="col-sm-12 text-center">
+                        <p class="font-weight-light">Note: Cookies should be enabled, in order to login.</p>
+                        <p class="text-center w-100" *ngIf="generalError" class="input-error">{{generalErrorMessage}}</p>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" type="submit" class="btn w-100 border success">Login</button>
+            </div>
+        </div>
+    </form>
+</div>

@@ -1,0 +1,30 @@
+<div class="modal fade" id="vote_modal" tabindex="-1" role="dialog" aria-labelledby="vote_modal_label" aria-hidden="true">
+    <form class="modal-dialog modal-dialog-centered" #voteForm="ngForm" (submit)="voteNow(voteForm)" role="document">
+        <div class="modal-content">
+            <div class="modal-header text-center">
+            <h2 class="modal-title font-weight-light w-100 ml-4" id="vote_modal_label">Vote for <span class="font-weight-bold">{{vote?.nominee?.firstName}} {{vote?.nominee?.lastName}}</span></h2>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="form-group mb-4">
+                            <label for="email">Email</label>
+                            <input type="email" class="form-control secondary" id="email"
+                            placeholder="Your email" ngModel name="email" #email="ngModel" required=""
+                            [ngClass]="{'error': (voteForm.submitted && email.invalid) || generalError }">
+                        </div>
+                    </div>
+                    <div class="col-sm-12 text-center">
+                        <p class="text-center w-100" *ngIf="generalError" class="input-error">{{generalErrorMessage}}</p>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" type="submit" class="btn w-100 border success">Vote Now</button>
+            </div>
+        </div>
+    </form>
+</div>

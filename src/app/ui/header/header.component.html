@@ -1,0 +1,28 @@
+<nav class="navbar sticky-top navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand" [routerLink]="[ isLoggedIn ? '/dashboard' :'/' ]">Votinator</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item" routerLinkActive="active">
+          <a class="nav-link" [routerLink]="[ isLoggedIn ? '/dashboard' :'/' ]"> {{ isLoggedIn  ? 'Dashboard' :'Home' }} <span class="sr-only">(current)</span></a>
+        </li>
+        <li *ngIf="isLoggedIn" class="nav-item" routerLinkActive="active">
+          <a class="nav-link" [routerLink]="['/nominees']">Manage Nominees</a>
+        </li>
+      </ul>
+      <ul class="navbar-nav my-2 my-lg-0">
+        <li *ngIf="!isLoggedIn" class="nav-item">
+            <a *ngIf="!isLoggedIn" routerLink="/" class="nav-link" data-toggle="modal" data-target="#login_modal">Login<span class="sr-only">(current)</span></a>
+
+        </li>
+        <li *ngIf="isLoggedIn" class="nav-item" routerLinkActive="active">
+          <a [routerLink]="['/settings']" class="nav-link">Settings<span class="sr-only">(current)</span></a>
+        </li>
+        <li *ngIf="isLoggedIn" class="nav-item">
+          <a (click)="logout($event)" [routerLink]="['/']" class="nav-link">Logout<span class="sr-only">(current)</span></a>
+        </li>
+      </ul>
+    </div>
+  </nav>

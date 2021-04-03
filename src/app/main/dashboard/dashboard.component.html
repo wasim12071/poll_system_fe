@@ -1,0 +1,67 @@
+<div class="container d-flex align-items-center justify-content-center flex-column h-100">
+    <div class="row w-100">
+        <div class="col-12 text-right">
+            <button (click)="genratePdf('dashboard_view', 'print_btn')" id="print_btn" class="btn border"><i class="fas fa-file-pdf mr-2"></i>Print to PDF</button>
+        </div>
+    </div>
+    <div class="row w-100" id="dashboard_view">
+        <div class="col-12">
+            <div class="row w-100">
+                <div class="col-12 pb-4 pt-4 d-flex align-items-center justify-content-center flex-column">
+                    <div class="w-100 h-100 py-4 px-1 text-center border section_box mb-3">
+                        <h1 class="w-100"><i class="far fa-check-square mr-2"></i> {{getTotal}} {{ getTotal === 1 ? 'Vote' : 'Votes' }}</h1>
+                    </div>
+                </div>
+                <div class="col-12 px-1">
+                    <ngx-charts-number-card [results]="formatedData" [animations]="'true'" [valueFormatting]="valueFormatting">
+                    </ngx-charts-number-card>
+                </div>
+            </div>
+            <div class="row h-md-50 w-100">
+                <div class="col-12 col-md-6 min-vh-50 pb-3">
+                    <div class="w-100 h-100 py-1 px-1 section_box mb-3">
+                        <ngx-charts-pie-chart
+                            [results]="formatedData"
+                            [gradient]="gradient"
+                            [legend]="showLegend"
+                            [labels]="showLabels"
+                            [doughnut]="isDoughnut">
+                        </ngx-charts-pie-chart>
+                    </div>
+                </div>
+                <div class="col-12 col-md-6 min-vh-50 pb-3">
+                    <div class="w-100 h-100 py-1 px-1 section_box mb-3">
+                        <ngx-charts-bar-vertical
+                            [results]="formatedData"
+                            [gradient]="gradient"
+                            [xAxis]="showXAxis"
+                            [yAxis]="showYAxis"
+                            [legend]="showLegend"
+                            [showXAxisLabel]="showXAxisLabel"
+                            [showYAxisLabel]="showYAxisLabel"
+                            [xAxisLabel]="xAxisLabel"
+                            [yAxisLabel]="yAxisLabel">
+                        </ngx-charts-bar-vertical>
+                    </div>
+                </div>
+            </div>
+            <div class="row w-100">
+                <div class="col-12 mb-4 pb-3">
+                    <ngx-table [configuration]="configuration" [data]="nominees" [columns]="columns">
+                        <ng-template let-row let-index="index">
+                            <td>
+                                <div>{{row.firstName}}</div>
+                            </td>
+                            <td>
+                                <div>{{row.lastName}}</div>
+                            </td>
+                            <td>
+                                <div>{{row.count}}</div>
+                            </td>
+                        </ng-template>
+                    </ngx-table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
